@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новогоднее пожелание</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: white;
+            text-align: center;
+            background-image: url('новогодний-фон.jpg');
+            background-size: cover;
+        }
+        .wish-container {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wish-container">
+        <h1 id="wish-title">Новогоднее пожелание</h1>
+        <p id="wish-text">Текст пожелания</p>
+    </div>
+    <script>
+        // Функция для получения параметров из URL
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Установка текста пожелания из параметров URL
+        document.getElementById('wish-text').textContent = getParameterByName('wish');
+    </script>
+</body>
+</html>
